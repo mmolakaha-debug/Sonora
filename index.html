@@ -56,11 +56,26 @@
   </div>
 
   <div class="player" id="player">
-    <div class="now-playing"><div class="mini-cover" id="playerCover"><span>♫</span></div><div class="now-copy"><strong id="playerTitle">Nothing playing yet</strong><span id="playerArtist">Choose a track to begin</span></div><button class="player-heart" id="playerFavorite" aria-label="Favorite current track" title="Favorite">♡</button></div>
+    <div class="now-playing"><div class="mini-cover" id="playerCover"><span>♫</span></div><div class="now-copy"><strong id="playerTitle">Nothing playing yet</strong><span id="playerArtist">Choose a track to begin</span></div><button class="player-expand" id="playerExpand" aria-label="Open full player" title="Open full player">↗</button><button class="player-heart" id="playerFavorite" aria-label="Favorite current track" title="Favorite">♡</button></div>
     <div class="player-center"><div class="player-controls"><button class="control-button subtle" id="shuffleBtn" aria-label="Shuffle" title="Shuffle">⤨</button><button class="control-button" id="prevBtn" aria-label="Previous track" title="Previous">◂</button><button class="play-button" id="playBtn" aria-label="Play" title="Play">▶</button><button class="control-button" id="nextBtn" aria-label="Next track" title="Next">▸</button><button class="control-button subtle" id="repeatBtn" aria-label="Repeat" title="Repeat">↻</button></div><div class="progress-row"><span id="currentTime">0:00</span><input type="range" id="seekBar" min="0" max="100" value="0" aria-label="Track progress"><span id="durationTime">0:00</span></div></div>
     <div class="player-right"><span class="volume-icon">◖</span><input type="range" id="volumeBar" min="0" max="1" step="0.01" value="0.8" aria-label="Volume"><button class="queue-button" id="queueBtn" title="View songs">☷</button></div>
   </div>
 
+<div class="full-player" id="fullPlayer" hidden>
+  <div class="full-player-backdrop"></div>
+  <header class="full-player-top"><button class="glass-icon" id="closeFullPlayer" aria-label="Close player">⌄</button><div><span class="eyebrow">NOW PLAYING</span><strong>Your listening space</strong></div><button class="glass-icon" id="fullQueueBtn" aria-label="View queue">☷</button></header>
+  <main class="full-player-layout">
+    <section class="full-player-main">
+      <div class="full-art-wrap"><div class="full-art" id="fullArt"><span>♫</span></div><div class="art-glow"></div></div>
+      <div class="full-track-info"><div><h1 id="fullTitle">Nothing playing yet</h1><p id="fullArtist">Choose a track to begin</p></div><button class="full-heart" id="fullFavorite" aria-label="Favorite current track">♡</button></div>
+      <div class="full-progress"><span id="fullCurrentTime">0:00</span><input type="range" id="fullSeekBar" min="0" max="100" value="0" aria-label="Track progress"><span id="fullDurationTime">0:00</span></div>
+      <div class="full-controls"><button class="glass-icon" id="fullShuffleBtn" aria-label="Shuffle">⤨</button><button class="glass-icon" id="fullPrevBtn" aria-label="Previous track">◂</button><button class="full-play" id="fullPlayBtn" aria-label="Play">▶</button><button class="glass-icon" id="fullNextBtn" aria-label="Next track">▸</button><button class="glass-icon" id="fullRepeatBtn" aria-label="Repeat">↻</button></div>
+      <div class="full-volume"><span>◖</span><input type="range" id="fullVolumeBar" min="0" max="1" step="0.01" value="0.8" aria-label="Volume"><span>◗</span></div>
+    </section>
+    <aside class="full-queue"><div class="queue-heading"><div><p class="eyebrow">UP NEXT</p><h2>Playing next</h2></div><span id="fullQueueCount">0 tracks</span></div><div id="fullQueueList" class="full-queue-list"></div></aside>
+  </main>
+  <div class="full-player-foot"><span>SONORA</span><span>Every track, a little world of its own.</span></div>
+</div>
   <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.m4a,.aac,.flac,.ogg,.opus" multiple hidden>
   <input type="file" id="folderInput" accept="audio/*,.mp3,.wav,.m4a,.aac,.flac,.ogg,.opus" webkitdirectory directory multiple hidden>
   <div class="modal-backdrop" id="importModal" hidden><section class="import-modal" role="dialog" aria-modal="true" aria-labelledby="importTitle"><button class="modal-close" id="closeModal" aria-label="Close">×</button><div class="modal-symbol">↥</div><p class="eyebrow">GROW YOUR LIBRARY</p><h2 id="importTitle">Bring your music in.</h2><p class="modal-description">Choose a few tracks or import a whole folder. Your audio stays on this device for this session.</p><div class="drop-zone" id="dropZone" tabindex="0"><div class="drop-icon">♫</div><strong>Drop audio files here</strong><span>MP3, WAV, M4A, AAC, FLAC, OGG and more</span><button class="outline-button" id="browseFiles">Browse files</button></div><div class="import-actions"><button class="secondary-button" id="browseFolder">＋ Choose folder</button><span id="importStatus">No files selected</span></div><p class="privacy-note"><span>ⓘ</span> Nothing is uploaded to a server. Refreshing or closing this page clears the imported session.</p></section></div>
