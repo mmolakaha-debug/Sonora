@@ -3,8 +3,8 @@
 A first visual and interactive prototype for a personal music library.
 
 ## Run it
-1. Download and extract `Sonora-Stage-01.zip`.
-2. Open the `Sonora` folder.
+1. Download the repository as a ZIP using **Code → Download ZIP**, then extract it.
+2. Open the extracted `Sonora` folder.
 3. Double-click `index.html` to open it in Firefox, Chrome, or Edge.
 4. Click **Add music** or **Choose folder** and select your audio files.
 5. Open **Songs**, then click the play icon on a track.
