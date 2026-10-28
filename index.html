@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f5">
+  <meta name="description" content="Sonora — your personal music library.">
+  <title>Sonora — Your music, your space</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#home" aria-label="Sonora home"><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>sonora</span></a>
+      <div class="nav-label">LIBRARY</div>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span>Home</button>
+        <button class="nav-item" data-page="songs"><span class="nav-icon">≡</span>Songs <span class="nav-count" id="songNavCount">0</span></button>
+        <button class="nav-item" data-page="albums"><span class="nav-icon">▦</span>Albums</button>
+        <button class="nav-item" data-page="artists"><span class="nav-icon">♙</span>Artists</button>
+        <button class="nav-item" data-page="favorites"><span class="nav-icon">♡</span>Favorites</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="library-summary"><div class="summary-icon">♫</div><div><strong id="summarySongs">0 songs</strong><span id="summaryDuration">Your library starts here</span></div></div>
+        <button class="sidebar-add" id="sidebarAdd"><span>＋</span> Add music</button>
+        <p class="sidebar-note">Your music. Your space.</p>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu icon-button" id="mobileMenu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumbs"><span>SONORA</span><span class="crumb-slash">/</span><strong id="crumbCurrent">Home</strong></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search your library" autocomplete="off" aria-label="Search your library"><kbd>⌘ K</kbd></label>
+        <button class="avatar" aria-label="Local library">S</button>
+      </header>
+
+      <section class="content" id="content" tabindex="-1">
+        <div class="welcome-row"><div><p class="eyebrow" id="pageEyebrow">YOUR PERSONAL LIBRARY</p><h1 id="pageTitle">Your music, <em>your space.</em></h1><p class="page-subtitle" id="pageSubtitle">A little place for all the sounds you love.</p></div><button class="primary-button" id="heroAdd"><span>＋</span> Add music</button></div>
+
+        <div class="notice" id="sessionNotice"><span class="notice-dot"></span><span><strong>Local preview</strong> — imported tracks are available for this session only. Cloud sync and permanent storage aren't set up yet.</span><button id="dismissNotice" aria-label="Dismiss notice">×</button></div>
+
+        <section class="hero-feature" id="heroFeature">
+          <div class="hero-copy"><span class="feature-tag"><span class="sparkle">✳</span> A SPACE OF YOUR OWN</span><h2>Make room for<br>what <em>moves you.</em></h2><p>Bring your favorite tracks together in one calm, considered space.</p><button class="text-button" id="featureAdd">Bring in your music <span>↗</span></button></div>
+          <div class="hero-art" aria-label="Abstract album artwork"><div class="art-orb orb-one"></div><div class="art-orb orb-two"></div><div class="art-ring"></div><div class="art-caption">S / 001<br><span>SONORA SESSIONS</span></div></div>
+        </section>
+
+        <section class="section-block" id="recentSection"><div class="section-heading"><div><p class="eyebrow">PICK UP THE VIBE</p><h2>Recently added</h2></div><button class="quiet-link" data-goto="songs">View all <span>→</span></button></div><div class="track-list" id="recentTracks"></div><div class="empty-inline" id="recentEmpty"><div class="empty-glyph">♫</div><div><strong>Your next favorite is waiting.</strong><p>Add a few tracks to start building your library.</p></div><button class="outline-button" id="emptyAdd">Choose music</button></div></section>
+
+        <section class="section-block albums-section" id="albumsSection"><div class="section-heading"><div><p class="eyebrow">COVER TO COVER</p><h2>Albums in your orbit</h2></div><button class="quiet-link" data-goto="albums">Explore albums <span>→</span></button></div><div class="album-grid" id="albumGrid"></div><div class="empty-albums" id="albumEmpty"><div class="empty-art">◌</div><span>Your album collection will live here.</span></div></section>
+
+        <section class="section-block artist-section" id="artistSection"><div class="section-heading"><div><p class="eyebrow">THE PEOPLE BEHIND THE SOUND</p><h2>Your artists</h2></div><button class="quiet-link" data-goto="artists">All artists <span>→</span></button></div><div class="artist-grid" id="artistGrid"></div><div class="empty-albums" id="artistEmpty"><div class="empty-art">♙</div><span>Your artists will appear as you add music.</span></div></section>
+        <footer class="footer"><span>SONORA</span><span>Made for the love of listening.</span><span>LOCAL PREVIEW · 01</span></footer>
+      </section>
+    </main>
+  </div>
+
+  <div class="player" id="player">
+    <div class="now-playing"><div class="mini-cover" id="playerCover"><span>♫</span></div><div class="now-copy"><strong id="playerTitle">Nothing playing yet</strong><span id="playerArtist">Choose a track to begin</span></div><button class="player-heart" id="playerFavorite" aria-label="Favorite current track" title="Favorite">♡</button></div>
+    <div class="player-center"><div class="player-controls"><button class="control-button subtle" id="shuffleBtn" aria-label="Shuffle" title="Shuffle">⤨</button><button class="control-button" id="prevBtn" aria-label="Previous track" title="Previous">◂</button><button class="play-button" id="playBtn" aria-label="Play" title="Play">▶</button><button class="control-button" id="nextBtn" aria-label="Next track" title="Next">▸</button><button class="control-button subtle" id="repeatBtn" aria-label="Repeat" title="Repeat">↻</button></div><div class="progress-row"><span id="currentTime">0:00</span><input type="range" id="seekBar" min="0" max="100" value="0" aria-label="Track progress"><span id="durationTime">0:00</span></div></div>
+    <div class="player-right"><span class="volume-icon">◖</span><input type="range" id="volumeBar" min="0" max="1" step="0.01" value="0.8" aria-label="Volume"><button class="queue-button" id="queueBtn" title="View songs">☷</button></div>
+  </div>
+
+  <input type="file" id="fileInput" accept="audio/*,.mp3,.wav,.m4a,.aac,.flac,.ogg,.opus" multiple hidden>
+  <input type="file" id="folderInput" accept="audio/*,.mp3,.wav,.m4a,.aac,.flac,.ogg,.opus" webkitdirectory directory multiple hidden>
+  <div class="modal-backdrop" id="importModal" hidden><section class="import-modal" role="dialog" aria-modal="true" aria-labelledby="importTitle"><button class="modal-close" id="closeModal" aria-label="Close">×</button><div class="modal-symbol">↥</div><p class="eyebrow">GROW YOUR LIBRARY</p><h2 id="importTitle">Bring your music in.</h2><p class="modal-description">Choose a few tracks or import a whole folder. Your audio stays on this device for this session.</p><div class="drop-zone" id="dropZone" tabindex="0"><div class="drop-icon">♫</div><strong>Drop audio files here</strong><span>MP3, WAV, M4A, AAC, FLAC, OGG and more</span><button class="outline-button" id="browseFiles">Browse files</button></div><div class="import-actions"><button class="secondary-button" id="browseFolder">＋ Choose folder</button><span id="importStatus">No files selected</span></div><p class="privacy-note"><span>ⓘ</span> Nothing is uploaded to a server. Refreshing or closing this page clears the imported session.</p></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <audio id="audio" preload="metadata"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
